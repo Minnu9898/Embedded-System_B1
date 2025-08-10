@@ -1,0 +1,79 @@
+What is Implicit and Explicit Typecasting ?
+
+IMPLICIT TYPECASTING 
+
+	The compiler automatically converts one data type to another without explicit instructions from the programmer.
+When it happens:
+
+	When assigning a smaller data type value to a larger data type variable (widening conversion).
+	int x=12
+	float y=x;
+	printf("%d", y) //12.000000
+
+	When performing operations between two different types and one type has a lower rank.
+
+Order of promotion : byte → short → int → long → float → double
+Key Features:
+
+	1. Done automatically by the compiler.
+
+	2. No syntax needed from the programmer.
+
+	3. Usually from lower precision to higher precision.
+
+	4. Rarely causes errors unless precision mismatch matters (e.g., int to float losing some decimal accuracy in reverse).
+
+Example:
+
+    int main() 
+	{
+
+	int a = 5;
+	double b = 2; // double variable, not literal
+	double result = a / b; // a implicitly cast to double before division
+
+	OR
+	int num1=5;
+	int num2=2;
+
+	double denom = num2;
+	int intResult = num1 / num2;
+	double doubleResult = num1 / denom; 
+
+	printf("Integer Division Result: %d\n", intResult);       // 2
+    	printf("Division with Implicit Casting: %.2f\n", doubleResult); // 2.50
+
+	}
+
+EXPLICIT TYPECASTING
+
+	The programmer manually forces a conversion from one type to another using a cast operator.
+When it happens:
+
+	When converting from a larger data type to a smaller one (narrowing conversion). ( Eg: float to Int)
+
+	When conversion may cause data loss or precision loss.
+
+	When we want a specific type for calculation.
+Key Features:
+
+	1.Must be done by the programmer using cast syntax.
+
+	2.Often from higher precision to lower precision.
+
+	3.May cause data truncation, overflow, or precision loss.
+
+	4.Gives complete control to the programmer over conversion.
+
+Example
+	int main() {
+    		int num1 = 5;
+    		int num2 = 2;
+
+    		int intResult = num1 / num2; // Integer division (no casting)
+		// Explicit typecasting: converting int to double manually
+		double result1 = (double) num1 / num2; // Only num1 is cast
+    		double result2 = num1 / (double) num2;  // Only num2 is cast
+    		double result3 = (double) num1 / (double) num2;// Both cast
+
+		}
