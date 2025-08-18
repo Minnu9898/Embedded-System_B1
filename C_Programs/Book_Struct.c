@@ -68,4 +68,18 @@ int main()
         }
     }
 
+//optimised code  for learning purpose
+        // int indexMostExpensive = 0;
+        // for (i = 1; i < 3; i++) {
+        // if (books[i].price > books[indexMostExpensive].price) {
+        //     indexMostExpensive = i;
+        // }
+        // Print details of the most expensive book
+    // printf("\nMost Expensive Book:\n");
+    // printf("Title: %s\n", books[indexMostExpensive].title);
+    // printf("Author: %s\n", books[indexMostExpensive].author);
+    // printf("Price: %.2f\n", books[indexMostExpensive].price);
+
+    }
+
 }
