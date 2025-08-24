@@ -40,7 +40,8 @@ int main()
         scanf("%f",&b[i].price);
 
     }
-    while(ch=getchar()!='\n' && ch!=EOF)
+        while(ch=getchar()!='\n' && ch!=EOF)
+
     {
         
     }
@@ -80,6 +81,6 @@ int main()
     // printf("Author: %s\n", books[indexMostExpensive].author);
     // printf("Price: %.2f\n", books[indexMostExpensive].price);
 
-    }
+   // }
 
 }
