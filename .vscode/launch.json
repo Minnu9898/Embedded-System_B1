@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/MinnuDiary/Desktop/Embedded System_B1/C_Programs",
-      "program": "c:/Users/MinnuDiary/Desktop/Embedded System_B1/C_Programs/build/Debug/outDebug",
+      "cwd": ".",
+      "program": "build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
