@@ -53,4 +53,14 @@ int main()
      printf("\n Enter the position to be cleared: ");
     scanf("%d", &p);
     ClearBit(n,p);
+
+    //SWAP 2 NUMBERS USING XOR
+    int a=25;
+    int b=12;
+    a=a^b;
+    b=a^b;
+    a=a^b;
+    printf("swaped value of a=%d",a);
+    printf("swaped value of b=%d",b);
 }
+
