@@ -60,7 +60,7 @@ int main()
     a=a^b;
     b=a^b;
     a=a^b;
-    printf("swaped value of a=%d",a);
-    printf("swaped value of b=%d",b);
+    printf("\nswaped value of a=%d",a);
+    printf("\nswaped value of b=%d",b);
 }
 
