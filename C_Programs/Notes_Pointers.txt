@@ -1,0 +1,91 @@
+Notes 
+
+What is Void Pointer ?
+	A void pointer (void*) is a special type of pointer that can point to any data type.
+	But since it has no type, you cannot directly dereference it without casting
+Example
+	int x = 10;
+    	float y = 5.5;
+
+    	void *ptr;   // void pointer
+
+    	ptr = &x;    // points to int
+    	printf("x = %d\n", *(int*)ptr);   // cast required
+
+    	ptr = &y;    // now points to float
+    	printf("y = %.2f\n", *(float*)ptr); // cast required
+
+What all are the methods used for dynamic memory allocation?
+	In C, dynamic memory allocation is done using these 4 library functions (<stdlib.h>):
+
+	malloc(size) → Allocates uninitialized memory
+	calloc(num, size) → Allocates memory and initializes it to zero
+	realloc(ptr, new_size) → Reallocates memory to a new size
+	free(ptr) → Frees the allocated memory
+Example:
+	int *arr;
+
+    	// malloc
+    	arr = (int*) malloc(3 * sizeof(int));
+
+    	// realloc (expand to 5 elements)
+    	arr = (int*) realloc(arr, 5 * sizeof(int));
+
+    	// calloc (initialize to zero)
+    	int *arr2 = (int*) calloc(5, sizeof(int));
+
+    	// free memory
+    	free(arr);
+    	free(arr2);
+
+What are the 2 mandatory conditions while using malloc ?
+	When using malloc(), you must:
+
+	1.Check if allocation was successful (because malloc returns NULL if memory is not available).
+	2.Free the memory after use (to avoid memory leaks).
+Example:
+	int main() {
+    	int *ptr = (int*) malloc(5 * sizeof(int));
+
+    	// Condition 1: Check allocation
+    	if (ptr == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1;
+    	}
+
+    	// Use memory
+    	for (int i = 0; i < 5; i++) {
+        ptr[i] = i + 1;
+        printf("%d ", ptr[i]);
+    	}
+
+    	// Condition 2: Free memory
+    	free(ptr);
+
+    	return 0;
+	}
+
+What is dangling pointer ?
+	A dangling pointer is a pointer that points to memory that has been freed (or gone out of scope).
+	Accessing it leads to undefined behavior.
+Example:
+	int *ptr = (int*) malloc(sizeof(int));
+    	*ptr = 100;
+
+    	free(ptr);   // memory freed
+
+    	// Now ptr is dangling
+    	printf("%d\n", *ptr);  // ❌ Undefined behavior
+
+What is Wild Pointer ?
+	A wild pointer is an uninitialized pointer that points to some random memory location.
+	Accessing it can cause program crashes.
+Example: 
+	int *ptr;   // wild pointer (not initialized)
+
+    	// printf("%d", *ptr);  // ❌ Undefined behavior
+
+    	// Fix: Initialize it
+    	int x = 10;
+    	ptr = &x;
+    	printf("%d\n", *ptr);   // ✅ Safe
