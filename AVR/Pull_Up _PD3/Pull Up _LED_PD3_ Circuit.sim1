@@ -1,0 +1,33 @@
+<circuit version="1.1.0-SR1" rev="2005" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
+
+<item itemtype="Led" CircId="Led-3" mainComp="false" Show_id="false" Show_Val="false" Pos="-236,-28" rotation="-180" hflip="1" vflip="1" label="Led-3" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Color="Yellow" Grounded="false" Threshold="2.4 V" MaxCurrent="30 mA" Resistance="0.6 Ω" />
+
+<item itemtype="Resistor" CircId="Resistor-5" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="-76,44" rotation="-90" hflip="1" vflip="-1" label="Resistor-5" idLabPos="-16,-24" labelrot="0" valLabPos="-16,6" valLabRot="0" Resistance="10 Ω" />
+
+<item itemtype="MCU" CircId="mega328-6" mainComp="false" Show_id="true" Show_Val="false" Pos="-160,-64" rotation="0" hflip="1" vflip="1" label="PULL UP - Resistor to Vcc" idLabPos="-0.609507,-38.2852" labelrot="0" valLabPos="-16,20" valLabRot="0" Frequency="16 MHz" Program="C:/Users/MinnuDiary/Desktop/Embedded System_B1/AVR/Pull_Up _PD3/Pull_Up _PD3/Debug/Pull_Up _PD3.hex" Auto_Load="false" saveEepr="true" Logic_Symbol="false" Rst_enabled="false" Ext_Osc="false" Wdt_enabled="false" Clk_Out="false" MainMcu="true" SerialMon="-1" />
+
+<item itemtype="Ground" CircId="Ground-7" mainComp="false" Show_id="false" Show_Val="false" Pos="-276,56" rotation="0" hflip="1" vflip="1" label="Ground-7" idLabPos="-16,8" labelrot="0" valLabPos="-16,20" valLabRot="0" />
+
+<item itemtype="Ground" CircId="Ground-9" mainComp="false" Show_id="false" Show_Val="false" Pos="44,44" rotation="0" hflip="1" vflip="1" label="Ground-9" idLabPos="-16,8" labelrot="0" valLabPos="-16,20" valLabRot="0" />
+
+<item itemtype="Fixed Voltage" CircId="Fixed Voltage-10" mainComp="false" Show_id="true" Show_Val="false" Pos="-32,84" rotation="-180" hflip="1" vflip="1" label="5 V" idLabPos="7.3123,24.7605" labelrot="180" valLabPos="-16,8" valLabRot="0" Voltage="5 V" Out="true" />
+
+<item itemtype="Switch" CircId="Switch-11" mainComp="false" Show_id="false" Show_Val="false" Pos="-20,-16" rotation="0" hflip="1" vflip="1" label="Switch-11" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Norm_Close="false" DT="false" Poles="1" />
+
+<item itemtype="Node" CircId="Node-12" mainComp="false" Pos="-76,-16" />
+
+<item itemtype="Connector" uid="Connector-1" startpinid="Led-3-rPin" endpinid="Ground-7-Gnd" pointList="-252,-28,-276,-28,-276,40" />
+
+<item itemtype="Connector" uid="Connector-6" startpinid="Led-3-lPin" endpinid="mega328-6-PORTD3" pointList="-220,-28,-168,-28,-168,-24" />
+
+<item itemtype="Connector" uid="Connector-9" startpinid="Resistor-5-rPin" endpinid="Fixed Voltage-10-outnod" pointList="-76,60,-76,84,-48,84" />
+
+<item itemtype="Connector" uid="Connector-11" startpinid="Node-12-1" endpinid="Switch-11-pinP0" pointList="-76,-16,-36,-16" />
+
+<item itemtype="Connector" uid="Connector-12" startpinid="mega328-6-PORTC0" endpinid="Node-12-0" pointList="-120,-16,-76,-16" />
+
+<item itemtype="Connector" uid="Connector-13" startpinid="Node-12-2" endpinid="Resistor-5-lPin" pointList="-76,-16,-76,28" />
+
+<item itemtype="Connector" uid="Connector-14" startpinid="Switch-11-switch0pinN" endpinid="Ground-9-Gnd" pointList="-4,-16,44,-16,44,28" />
+
+</circuit>
