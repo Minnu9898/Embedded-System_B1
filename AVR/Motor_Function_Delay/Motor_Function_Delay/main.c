@@ -12,10 +12,12 @@
     //#define DELAY1 2000
     //#define DELAY2 5000
 
+
+//Took help from Chatgpt
 void variable_delay_ms(uint16_t ms)
 {
 	while(ms--) {
-		_delay_ms(1);   // 1ms delay repeated
+		_delay_ms(1);   // 1ms delay repeated  
 	}
 }	
 	

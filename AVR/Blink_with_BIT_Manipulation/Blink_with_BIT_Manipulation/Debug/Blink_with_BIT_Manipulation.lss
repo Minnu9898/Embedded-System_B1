@@ -77,17 +77,17 @@ Disassembly of section .text:
 
 int main(void)
 {
-   DDRB= DDRB|(1<<DDB5); // bit made as output to connect LED
+   DDRB= DDRB|(1<<DDB4); // bit made as output to connect LED
   80:	84 b1       	in	r24, 0x04	; 4
-  82:	80 62       	ori	r24, 0x20	; 32
+  82:	80 61       	ori	r24, 0x10	; 16
   84:	84 b9       	out	0x04, r24	; 4
    
    
     while (1) 
     {
-		PORTB=PORTB|(1<<PORTB5);
+		PORTB=PORTB|(1<<PORTB4); // LED CONNECTED TO PB5
   86:	85 b1       	in	r24, 0x05	; 5
-  88:	80 62       	ori	r24, 0x20	; 32
+  88:	80 61       	ori	r24, 0x10	; 16
   8a:	85 b9       	out	0x05, r24	; 5
 	#else
 		//round up by default
@@ -105,9 +105,9 @@ int main(void)
   9a:	00 c0       	rjmp	.+0      	; 0x9c <main+0x1c>
   9c:	00 00       	nop
 		_delay_ms(1000);
-		PORTB=PORTB&~ (1<<PORTB5);
+		PORTB=PORTB&~ (1<<PORTB4);  // CAN BE WRITTEN AS PORTB&=~(1<<PORT5)
   9e:	85 b1       	in	r24, 0x05	; 5
-  a0:	8f 7d       	andi	r24, 0xDF	; 223
+  a0:	8f 7e       	andi	r24, 0xEF	; 239
   a2:	85 b9       	out	0x05, r24	; 5
   a4:	2f ef       	ldi	r18, 0xFF	; 255
   a6:	83 ed       	ldi	r24, 0xD3	; 211

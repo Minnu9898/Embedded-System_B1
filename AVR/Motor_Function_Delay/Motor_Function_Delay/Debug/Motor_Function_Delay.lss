@@ -72,9 +72,9 @@ Disassembly of section .text:
   7c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 00000080 <variable_delay_ms>:
-    //#define DELAY1 2000
-    //#define DELAY2 5000
 
+
+//Took help from Chatgpt
 void variable_delay_ms(uint16_t ms)
 {
 	while(ms--) {
@@ -97,7 +97,7 @@ void variable_delay_ms(uint16_t ms)
   94:	31 09       	sbc	r19, r1
   96:	89 2b       	or	r24, r25
   98:	a1 f7       	brne	.-24     	; 0x82 <variable_delay_ms+0x2>
-		_delay_ms(1);   // 1ms delay repeated
+		_delay_ms(1);   // 1ms delay repeated  
 	}
 }	
   9a:	08 95       	ret

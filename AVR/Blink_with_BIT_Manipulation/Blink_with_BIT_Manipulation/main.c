@@ -12,14 +12,14 @@
 
 int main(void)
 {
-   DDRB= DDRB|(1<<DDB5); // bit made as output to connect LED
+   DDRB= DDRB|(1<<DDB4); // bit made as output to connect LED
    
    
     while (1) 
     {
-		PORTB=PORTB|(1<<PORTB5); // LED CONNECTED TO PB5
+		PORTB=PORTB|(1<<PORTB4); // LED CONNECTED TO PB5
 		_delay_ms(1000);
-		PORTB=PORTB&~ (1<<PORTB5);  // CAN BE WRITTEN AS PORTB&=~(1<<PORT5)
+		PORTB=PORTB&~ (1<<PORTB4);  // CAN BE WRITTEN AS PORTB&=~(1<<PORT5)
 		_delay_ms(1000);
     }
 }
