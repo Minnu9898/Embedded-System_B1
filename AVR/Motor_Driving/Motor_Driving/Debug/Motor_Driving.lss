@@ -121,15 +121,15 @@ int main(void)
   b2:	8f 7e       	andi	r24, 0xEF	; 239
   b4:	85 b9       	out	0x05, r24	; 5
   b6:	2f ef       	ldi	r18, 0xFF	; 255
-  b8:	83 ed       	ldi	r24, 0xD3	; 211
-  ba:	90 e3       	ldi	r25, 0x30	; 48
+  b8:	8b e7       	ldi	r24, 0x7B	; 123
+  ba:	92 e9       	ldi	r25, 0x92	; 146
   bc:	21 50       	subi	r18, 0x01	; 1
   be:	80 40       	sbci	r24, 0x00	; 0
   c0:	90 40       	sbci	r25, 0x00	; 0
   c2:	e1 f7       	brne	.-8      	; 0xbc <main+0x3c>
   c4:	00 c0       	rjmp	.+0      	; 0xc6 <main+0x46>
   c6:	00 00       	nop
-		_delay_ms(1000);	
+		_delay_ms(3000);	
 		PORTB=PORTB|(1<<PORTB4); //0 1
   c8:	85 b1       	in	r24, 0x05	; 5
   ca:	80 61       	ori	r24, 0x10	; 16
@@ -157,8 +157,8 @@ int main(void)
   ee:	8f 7e       	andi	r24, 0xEF	; 239
   f0:	85 b9       	out	0x05, r24	; 5
   f2:	2f ef       	ldi	r18, 0xFF	; 255
-  f4:	83 ed       	ldi	r24, 0xD3	; 211
-  f6:	90 e3       	ldi	r25, 0x30	; 48
+  f4:	8b e7       	ldi	r24, 0x7B	; 123
+  f6:	92 e9       	ldi	r25, 0x92	; 146
   f8:	21 50       	subi	r18, 0x01	; 1
   fa:	80 40       	sbci	r24, 0x00	; 0
   fc:	90 40       	sbci	r25, 0x00	; 0

@@ -23,13 +23,13 @@ int main(void)
 		_delay_ms(3000);
 		PORTB=PORTB&~ (1<<PORTB5);   // OFF
 		PORTB=PORTB&~ (1<<PORTB4);
-		_delay_ms(1000);	
+		_delay_ms(3000);	
 		PORTB=PORTB|(1<<PORTB4); //0 1
 		PORTB=PORTB&~ (1<<PORTB5); 
 		_delay_ms(3000);
 		PORTB=PORTB&~ (1<<PORTB5);   // OFF
 		PORTB=PORTB&~ (1<<PORTB4);
-		_delay_ms(1000);
+		_delay_ms(3000);
 		
 		
     }
