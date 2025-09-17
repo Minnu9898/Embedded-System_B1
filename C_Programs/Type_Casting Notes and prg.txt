@@ -77,3 +77,4 @@ Example
     		double result3 = (double) num1 / (double) num2;// Both cast
 
 		}
+
