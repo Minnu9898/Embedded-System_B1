@@ -18,7 +18,7 @@ void delay(void)
 	So 1 second=1/16384=610
 	*/
 	unsigned int i;
-	unsigned int count=610; //frequency =16MHz T=1/(16/1024)MHz
+	unsigned int count=61.0; //frequency =16MHz T=1/(16/1024)MHz
 	
 	for(i=0;i<count;i++)
 	{
