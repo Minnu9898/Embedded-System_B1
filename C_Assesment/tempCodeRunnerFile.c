@@ -1,0 +1,13 @@
+
+/*
+2. You are given an 8-bit register represented as an unsigned char. Write a function to:
+● Set the 3rd bit (bit index 2).
+● Clear the 6th bit (bit index 5).
+● Toggle the 1st bit (bit index 0). Return the modified register value.
+Note: Use bitwise operators only. Avoid loops or conditionals.
+
+
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
