@@ -28,7 +28,7 @@ void power_of_four(int num) // Q 7.) Check if a number is a power of 4?
     1. It should be power of 2 (only 1 bit is set) 
     2. Its bit will be set only in even position
     */
-   if (num>0 &&(num&(num-1))==0 && num%3==1) //5 or 3 any odd number
+   if (num>0 &&(num&(num-1))==0 && num%3==1) //5 or 3 any odd number (n & 0x55555555); 
    {
     printf("\nNumber is  Power of 4");
    }
@@ -46,7 +46,25 @@ void power_of_eight(int num) // Q 7.) Check if a number is a power of 8?
         2. Set bit position will be in a position which are multiple of 3 (0,3,6,9)
 
     */
-   if (num>0 && (num&(num-1))==0 && num%3==0)
+   if (num>0 && (num&(num-1))==0 && (num & 0x49249249))
+   {
+    printf("\nNumber is  Power of 8");
+   }
+   else
+   {
+    printf("\nNumber is  NOT a Power of 8");
+   }
+
+}
+
+void power_of_sixteen(int num) // Q 7.) Check if a number is a power of 8?
+{
+    /* Conditions
+        1. Should be Power of 2
+        2. (For powers of 16, that single set bit must be at positions 0, 4, 8, 12) -multiples of 4
+
+    */
+   if (num>0 && (num&(num-1))==0 && (num & 0x49249249))
    {
     printf("\nNumber is  Power of 8");
    }

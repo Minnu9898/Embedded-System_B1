@@ -3,6 +3,7 @@
 Q 1. )Check if the ith bit is set or not
 Q 2.) Set the ith bit of a number.
 Q 3.) clear the ith bit of a number.
+Q 4.) Swap 2 numbers
 
 */
 
@@ -10,7 +11,7 @@ Q 3.) clear the ith bit of a number.
 void printBin (int n)
 {
     int mask=0;
-// to find which is the value in BIT , we can do AND if its 1 it will retutn 1 if we do and with 1
+// to find which is the value in BIT , we can do "AND" if its 1 it will retutn 1 - if we do "AND" with 1
     for (int i=31; i>=0;i--) //32 bit 
     {
      mask=1<<i;
