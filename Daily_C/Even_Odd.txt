@@ -1,0 +1,26 @@
+Q. Find out if a number is even or odd.
+
+
+How to enter a user input?
+where to save the user input?
+What is even number?2 4 6 (multiple of 2)
+What is odd number? 1 3 5 
+How to find a number is even or odd ? -divide by 2 and reminder =0
+How to print result?
+
+#include<stdio.h>
+
+int main()
+{
+	int num;
+	printf("Enter the number:\n ");
+	scanf("%d",&num);
+	
+	if(num%2==0)
+	printf("Number is Even");
+	else
+	printf("Number is odd");
+
+}
+
+
