@@ -1,0 +1,13 @@
+/*
+ * stm32f446rxx.h
+ *
+ *  Created on: Nov 19, 2025
+ *      Author: MinnuDiary
+ */
+
+#ifndef STM32F446RXX_H_
+#define STM32F446RXX_H_
+
+
+
+#endif /* STM32F446RXX_H_ */

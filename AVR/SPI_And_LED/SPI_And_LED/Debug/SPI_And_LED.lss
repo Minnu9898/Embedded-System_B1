@@ -1,0 +1,179 @@
+
+SPI_And_LED.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  0000014e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000000fa  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  0000014e  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000180  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000020  00000000  00000000  000001c0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000745  00000000  00000000  000001e0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000699  00000000  00000000  00000925  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000002b3  00000000  00000000  00000fbe  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000024  00000000  00000000  00001274  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000003a3  00000000  00000000  00001298  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000048  00000000  00000000  0000163b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000010  00000000  00000000  00001683  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+   8:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+   c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  10:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  14:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  18:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  1c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  20:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  24:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  28:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  2c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  30:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  34:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  38:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  3c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  40:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  44:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  48:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  4c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  50:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  54:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  58:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  5c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  60:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  64:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+  74:	0e 94 40 00 	call	0x80	; 0x80 <main>
+  78:	0c 94 7b 00 	jmp	0xf6	; 0xf6 <_exit>
+
+0000007c <__bad_interrupt>:
+  7c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000080 <main>:
+
+int main(void)
+{
+	uint8_t chip_id;
+
+	DDRB |= (1 << PB3) | (1 << PB5) | (1 << PB2); // MOSI, SCK, SS as outputs
+  80:	84 b1       	in	r24, 0x04	; 4
+  82:	8c 62       	ori	r24, 0x2C	; 44
+  84:	84 b9       	out	0x04, r24	; 4
+	DDRB &= ~(1 << PB4);                           // MISO as input
+  86:	84 b1       	in	r24, 0x04	; 4
+  88:	8f 7e       	andi	r24, 0xEF	; 239
+  8a:	84 b9       	out	0x04, r24	; 4
+	PORTB |= (1 << PB2);                           // SS high initially
+  8c:	85 b1       	in	r24, 0x05	; 5
+  8e:	84 60       	ori	r24, 0x04	; 4
+  90:	85 b9       	out	0x05, r24	; 5
+	DDRD|=(1<<PD3);
+  92:	8a b1       	in	r24, 0x0a	; 10
+  94:	88 60       	ori	r24, 0x08	; 8
+  96:	8a b9       	out	0x0a, r24	; 10
+	// ===== SPI SETUP =====
+	SPCR = (1 << SPE) | (1 << MSTR) | (1 << SPR0); // Enable SPI Master
+  98:	81 e5       	ldi	r24, 0x51	; 81
+  9a:	8c bd       	out	0x2c, r24	; 44
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  9c:	2f ef       	ldi	r18, 0xFF	; 255
+  9e:	31 ee       	ldi	r19, 0xE1	; 225
+  a0:	84 e0       	ldi	r24, 0x04	; 4
+  a2:	21 50       	subi	r18, 0x01	; 1
+  a4:	30 40       	sbci	r19, 0x00	; 0
+  a6:	80 40       	sbci	r24, 0x00	; 0
+  a8:	e1 f7       	brne	.-8      	; 0xa2 <main+0x22>
+  aa:	00 c0       	rjmp	.+0      	; 0xac <main+0x2c>
+  ac:	00 00       	nop
+
+	_delay_ms(100); // allow BMP280 to power up
+
+	// ===== READ CHIP ID =====
+	PORTB &= ~(1 << PB2); // CSB low
+  ae:	85 b1       	in	r24, 0x05	; 5
+  b0:	8b 7f       	andi	r24, 0xFB	; 251
+  b2:	85 b9       	out	0x05, r24	; 5
+	SPDR = 0xD0;
+  b4:	80 ed       	ldi	r24, 0xD0	; 208
+  b6:	8e bd       	out	0x2e, r24	; 46
+	while (!(SPSR & (1 << SPIF)));
+  b8:	0d b4       	in	r0, 0x2d	; 45
+  ba:	07 fe       	sbrs	r0, 7
+  bc:	fd cf       	rjmp	.-6      	; 0xb8 <main+0x38>
+	(void)SPDR;
+  be:	8e b5       	in	r24, 0x2e	; 46
+	SPDR = 0x00;
+  c0:	1e bc       	out	0x2e, r1	; 46
+	while (!(SPSR & (1 << SPIF)));
+  c2:	0d b4       	in	r0, 0x2d	; 45
+  c4:	07 fe       	sbrs	r0, 7
+  c6:	fd cf       	rjmp	.-6      	; 0xc2 <main+0x42>
+	chip_id = SPDR;
+  c8:	9e b5       	in	r25, 0x2e	; 46
+	PORTB |= (1 << PB2); // CSB high
+  ca:	85 b1       	in	r24, 0x05	; 5
+  cc:	84 60       	ori	r24, 0x04	; 4
+  ce:	85 b9       	out	0x05, r24	; 5
+  d0:	2f ef       	ldi	r18, 0xFF	; 255
+  d2:	31 ee       	ldi	r19, 0xE1	; 225
+  d4:	84 e0       	ldi	r24, 0x04	; 4
+  d6:	21 50       	subi	r18, 0x01	; 1
+  d8:	30 40       	sbci	r19, 0x00	; 0
+  da:	80 40       	sbci	r24, 0x00	; 0
+  dc:	e1 f7       	brne	.-8      	; 0xd6 <main+0x56>
+  de:	00 c0       	rjmp	.+0      	; 0xe0 <main+0x60>
+  e0:	00 00       	nop
+	_delay_ms(100);
+
+	while (1)
+	{
+		if(chip_id==0x58)
+  e2:	98 35       	cpi	r25, 0x58	; 88
+  e4:	21 f4       	brne	.+8      	; 0xee <main+0x6e>
+		{
+			PORTD|=(1<<PD3);
+  e6:	8b b1       	in	r24, 0x0b	; 11
+  e8:	88 60       	ori	r24, 0x08	; 8
+  ea:	8b b9       	out	0x0b, r24	; 11
+  ec:	fa cf       	rjmp	.-12     	; 0xe2 <main+0x62>
+		}
+		else
+		{
+			PORTD &=~(1<<PD3);
+  ee:	8b b1       	in	r24, 0x0b	; 11
+  f0:	87 7f       	andi	r24, 0xF7	; 247
+  f2:	8b b9       	out	0x0b, r24	; 11
+  f4:	f6 cf       	rjmp	.-20     	; 0xe2 <main+0x62>
+
+000000f6 <_exit>:
+  f6:	f8 94       	cli
+
+000000f8 <__stop_program>:
+  f8:	ff cf       	rjmp	.-2      	; 0xf8 <__stop_program>

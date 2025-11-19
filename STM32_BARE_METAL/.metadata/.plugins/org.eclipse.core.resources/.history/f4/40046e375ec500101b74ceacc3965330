@@ -1,0 +1,40 @@
+/*
+ * stm32f446rxx.h
+ *
+ *  Created on: Nov 19, 2025
+ *      Author: MinnuDiary
+ */
+
+#ifndef STM32F446RXX_H_
+#define STM32F446RXX_H_
+
+/*
+ * GPIO BASE ADDRESSES -(AHB1 BUS)
+ */
+#define GPIOA_BASEADDR	0x40020000U
+#define GPIOB_BASEADDR	0x40020400U
+#define GPIOC_BASEADDR	0x40020800U
+#define GPIOD_BASEADDR	0x40020C00U
+#define GPIOE_BASEADDR	0x40021000U
+#define GPIOF_BASEADDR	0x40021400U
+#define GPIOG_BASEADDR	0x40021800U
+#define GPIOH_BASEADDR	0x40021C00U
+
+/*
+ * GPIO REGISTER STRUCTURE
+ */
+typedef struct
+{
+	volatile uint32t MODER;
+	volatile uint32t OTYPER;
+	volatile uint32t OSPEEDER;
+	volatile uint32t PUPDR;
+	volatile uint32t IDR;
+	volatile uint32t ODR;
+	volatile uint32t BSRR;
+	volatile uint32t LCKR;
+	volatile uint32t AFRL;
+	volatile uint32t AFRH;
+}GPIO_RegDef_t;
+
+#endif /* STM32F446RXX_H_ */
