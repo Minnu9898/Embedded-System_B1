@@ -7,6 +7,7 @@
 
 #ifndef STM32F446RXX_H_
 #define STM32F446RXX_H_
+#define volatile__vo_
 			/* Take  register boundary addresses (Reference Manual - page=58)
 			 * Find to which Bus GPIO /SPI/I2C is connected
 			 * Find Base address from that table- start defining
@@ -50,6 +51,73 @@ typedef struct
 #define GPIOH	((GPIO_RegDef_t*)GPIOH_BASEADDR)
 
 
+/* RCC BASE ADDRESS */
+
+#define RCC_BASEADDR 0x40023800U
+
+/* RCC REGISTER*/
+typedef struct
+{
+volatile uint32_t CR;            // RCC clock control register                    (0x00)
+    volatile uint32_t PLLCFGR;       // RCC PLL configuration register                (0x04)
+    volatile uint32_t CFGR;          // RCC clock configuration register              (0x08)
+    volatile uint32_t CIR;           // RCC clock interrupt register                  (0x0C)
+    volatile uint32_t AHB1RSTR;      // RCC AHB1 peripheral reset register            (0x10)
+    volatile uint32_t AHB2RSTR;      // RCC AHB2 peripheral reset register            (0x14)
+    volatile uint32_t AHB3RSTR;      // RCC AHB3 peripheral reset register            (0x18)
+   volatile uint32_t RESERVED0;     // Reserved                                      (0x1C)
+    volatile uint32_t APB1RSTR;      // RCC APB1 peripheral reset register            (0x20)
+    volatile uint32_t APB2RSTR;      // RCC APB2 peripheral reset register            (0x24)
+    volatile uint32_t RESERVED1[2];  // Reserved                                      (0x28-0x2C)
+    volatile uint32_t AHB1ENR;       // RCC AHB1 peripheral clock enable register     (0x30)
+    volatile uint32_t AHB2ENR;       // RCC AHB2 peripheral clock enable register     (0x34)
+    volatile uint32_t AHB3ENR;       // RCC AHB3 peripheral clock enable register     (0x38)
+    volatile uint32_t RESERVED2;     // Reserved                                      (0x3C)
+    volatile uint32_t APB1ENR;       // RCC APB1 peripheral clock enable register     (0x40)
+    volatile uint32_t APB2ENR;       // RCC APB2 peripheral clock enable register     (0x44)
+    volatile uint32_t RESERVED3[2];  // Reserved                                      (0x48-0x4C)
+    volatile uint32_t AHB1LPENR;     // RCC AHB1 peripheral clock enable in low power (0x50)
+    volatile uint32_t AHB2LPENR;     // RCC AHB2 peripheral clock enable in low power (0x54)
+    volatile uint32_t AHB3LPENR;     // RCC AHB3 peripheral clock enable in low power (0x58)
+    volatile uint32_t RESERVED4;     // Reserved                                      (0x5C)
+    volatile uint32_t APB1LPENR;     // RCC APB1 peripheral clock enable in low power (0x60)
+    volatile uint32_t APB2LPENR;     // RCC APB2 peripheral clock enable in low power (0x64)
+    volatile uint32_t RESERVED5[2];  // Reserved                                      (0x68-0x6C)
+    volatile uint32_t BDCR;          // RCC Backup domain control register            (0x70)
+    volatile uint32_t CSR;           // RCC clock control & status register           (0x74)
+    volatile uint32_t RESERVED6[2];  // Reserved                                      (0x78-0x7C)
+    volatile uint32_t SSCGR;         // RCC spread spectrum clock generation register (0x80)
+    volatile uint32_t PLLI2SCFGR;    // RCC PLLI2S configuration register             (0x84)
+    volatile uint32_t PLLSAICFGR;    // RCC PLLSAI configuration register             (0x88)
+    volatile uint32_t DCKCFGR;       // RCC Dedicated Clocks configuration register   (0x8C)
+    volatile uint32_t CKGATENR;      // RCC clocks gated enable register              (0x90)
+    volatile uint32_t DCKCFGR2;      // RCC Dedicated Clocks configuration register 2 (0x94)
+} RCC_RegDef_t;
+
+
+
+/* RCC POINTERS */
+#define RCC ((RCC_RegDef_t*)RCC_BASEADDR)
+
+/*CLOCK ENABLE FOR GPIO to enable the Bus - (bus of GPIO is AHB1)
+ * (In AHB1ENR register GPIOA is in zeroth bit ,thats why below query
+ * to enable GPIOA - CALL "GPIOA_CLK_EN() "
+ *
+ * RCC->AHB1ENR (to access a structure element using a pointer we use -> symbol)
+ * */
+
+#define GPIOA_CLK_EN()  (RCC->AHB1ENR |=(1<<0))
+#define GPIOB_CLK_EN()  (RCC->AHB1ENR |=(1<<1))
+#define GPIOC_CLK_EN()  (RCC->AHB1ENR |=(1<<2))
+#define GPIOD_CLK_EN()  (RCC->AHB1ENR |=(1<<3))
+#define GPIOE_CLK_EN()  (RCC->AHB1ENR |=(1<<4))
+#define GPIOF_CLK_EN()  (RCC->AHB1ENR |=(1<<5))
+#define GPIOG_CLK_EN()  (RCC->AHB1ENR |=(1<<6))
+#define GPIOH_CLK_EN()  (RCC->AHB1ENR |=(1<<7))
+
+
+/*=======================================I2C========================================*/
+
 /*I2C BASE ADDRESSES*/
 #define I2C1_BASEADDRESS  0x40005400U
 #define I2C2_BASEADDRESS  0x40005800U
@@ -77,11 +145,47 @@ typeDef struct
 #define I2C2  ((I2C_RegDef_t*)I2C2_BASEADDRESS)
 #define I2C3  ((I2C_RegDef_t*)I2C3_BASEADDRESS)
 
+
+
+/* RCC Enable for I2C - APB1 bus  */
+#define I2C1_CLK_EN()   (RCC->APB1ENR |=(1<<21)
+#define I2C2_CLK_EN()   (RCC->APB1ENR |=(1<<22)
+#define I2C3_CLK_EN()   (RCC->APB1ENR |=(1<<23)
+
+
+/*=======================================SPI========================================*/
+
 /*SPI BASE ADDRESSES*/
 #define SPI1_BASEADDR     0x40013000U   // On APB2
 #define SPI2_BASEADDR     0x40003800U   // On APB1
 #define SPI3_BASEADDR     0x40003C00U   // On APB1
 #define SPI4_BASEADDR     0x40013400U   // On APB2
+
+/*SPI REGISTER STRUCTURE*/
+typedef struct
+{
+    volatile uint32_t CR1;        // 0x00: Control register 1
+    volatile uint32_t CR2;        // 0x04: Control register 2
+    volatile uint32_t SR;         // 0x08: Status register
+    volatile uint32_t DR;         // 0x0C: Data register
+    volatile uint32_t CRCPR;      // 0x10: CRC polynomial register
+    volatile uint32_t RXCRCR;     // 0x14: RX CRC register
+    volatile uint32_t TXCRCR;     // 0x18: TX CRC register
+    volatile uint32_t I2SCFGR;    // 0x1C: I2S configuration register
+    volatile uint32_t I2SPR;      // 0x20: I2S prescaler register
+} SPI_RegDef_t;
+
+/*SPI POINTERS*/
+#define SPI1   ((SPI_RegDef_t*)SPI1_BASEADDR)
+#define SPI2   ((SPI_RegDef_t*)SPI2_BASEADDR)
+#define SPI3   ((SPI_RegDef_t*)SPI3_BASEADDR)
+#define SPI4   ((SPI_RegDef_t*)SPI4_BASEADDR)
+
+/* RCC Enable for SPI - APB1 bus and APB2 bus */
+#define SPI1_CLK_EN()   (RCC->APB2ENR |=(1<<12)
+#define SPI4_CLK_EN()   (RCC->APB2ENR |=(1<<13)
+#define SPI2_CLK_EN()   (RCC->APB1ENR |=(1<<14)
+#define SPI3_CLK_EN()   (RCC->APB1ENR |=(1<<15)
 
 
 #endif /* STM32F446RXX_H_ */
