@@ -1,0 +1,257 @@
+/*
+ * stm32f446rxx.h
+ *
+ *  Created on: Nov 19, 2025
+ *      Author: MinnuDiary
+ */
+
+#ifndef STM32F446RXX_H_
+#define STM32F446RXX_H_
+#include <stdint.h>      // <-- IMPORTANT
+#include <stddef.h>
+#define volatile__vo_
+
+			/* Take  register boundary addresses (Reference Manual - page=58)
+			 * Find to which Bus GPIO /SPI/I2C is connected
+			 * Find Base address from that table- start defining
+			 * Using structure declare registers in it using the register mapping page by clicking the link
+			 * Define pointers to point into these registers
+			 */
+
+/*GPIO BASE ADDRESSES -(AHB1 BUS)*/
+#define GPIOA_BASEADDR	0x40020000U
+#define GPIOB_BASEADDR	0x40020400U
+#define GPIOC_BASEADDR	0x40020800U
+#define GPIOD_BASEADDR	0x40020C00U
+#define GPIOE_BASEADDR	0x40021000U
+#define GPIOF_BASEADDR	0x40021400U
+#define GPIOG_BASEADDR	0x40021800U
+#define GPIOH_BASEADDR	0x40021C00U
+
+/*GPIO REGISTER STRUCTURE*/
+typedef struct
+{
+	volatile uint32_t MODER;    // GPIO port mode register              (0x00)
+	volatile uint32_t OTYPER;   // GPIO port output type register       (0x04)
+	volatile uint32_t OSPEEDR;  // GPIO port output speed register      (0x08)
+	volatile uint32_t PUPDR;    // GPIO port pull-up/pull-down register (0x0C)
+	volatile uint32_t IDR;      // GPIO port input data register        (0x10)
+	volatile uint32_t ODR;      // GPIO port output data register       (0x14)
+	volatile uint32_t BSRR;     // GPIO port bit set/reset register     (0x18)
+	volatile uint32_t LCKR;     // GPIO port configuration lock register(0x1C)
+	volatile uint32_t AFRL;     // GPIO alternate function low register (0x20)
+	volatile uint32_t AFRH;     // GPIO alternate function high register(0x24)
+
+}GPIO_RegDef_t;
+
+// to access GPIOA ->MODER
+
+/*GPIO POINTERS (To point to all registers in the structure*/
+#define GPIOA	((GPIO_RegDef_t*)GPIOA_BASEADDR)
+#define GPIOB	((GPIO_RegDef_t*)GPIOB_BASEADDR)
+#define GPIOC	((GPIO_RegDef_t*)GPIOC_BASEADDR)
+#define GPIOD	((GPIO_RegDef_t*)GPIOD_BASEADDR)
+#define GPIOE	((GPIO_RegDef_t*)GPIOE_BASEADDR)
+#define GPIOF	((GPIO_RegDef_t*)GPIOF_BASEADDR)
+#define GPIOG	((GPIO_RegDef_t*)GPIOG_BASEADDR)
+#define GPIOH	((GPIO_RegDef_t*)GPIOH_BASEADDR)
+
+
+/* RCC BASE ADDRESS */
+
+#define RCC_BASEADDR 0x40023800U
+
+/* RCC REGISTER*/
+typedef struct
+{
+volatile uint32_t CR;            // RCC clock control register                    (0x00)
+    volatile uint32_t PLLCFGR;       // RCC PLL configuration register                (0x04)
+    volatile uint32_t CFGR;          // RCC clock configuration register              (0x08)
+    volatile uint32_t CIR;           // RCC clock interrupt register                  (0x0C)
+    volatile uint32_t AHB1RSTR;      // RCC AHB1 peripheral reset register            (0x10)
+    volatile uint32_t AHB2RSTR;      // RCC AHB2 peripheral reset register            (0x14)
+    volatile uint32_t AHB3RSTR;      // RCC AHB3 peripheral reset register            (0x18)
+    volatile uint32_t RESERVED0;     // Reserved                                      (0x1C)
+    volatile uint32_t APB1RSTR;      // RCC APB1 peripheral reset register            (0x20)
+    volatile uint32_t APB2RSTR;      // RCC APB2 peripheral reset register            (0x24)
+    volatile uint32_t RESERVED1[2];  // Reserved                                      (0x28-0x2C)
+    volatile uint32_t AHB1ENR;       // RCC AHB1 peripheral clock enable register     (0x30)
+    volatile uint32_t AHB2ENR;       // RCC AHB2 peripheral clock enable register     (0x34)
+    volatile uint32_t AHB3ENR;       // RCC AHB3 peripheral clock enable register     (0x38)
+    volatile uint32_t RESERVED2;     // Reserved                                      (0x3C)
+    volatile uint32_t APB1ENR;       // RCC APB1 peripheral clock enable register     (0x40)
+    volatile uint32_t APB2ENR;       // RCC APB2 peripheral clock enable register     (0x44)
+    volatile uint32_t RESERVED3[2];  // Reserved                                      (0x48-0x4C)
+    volatile uint32_t AHB1LPENR;     // RCC AHB1 peripheral clock enable in low power (0x50)
+    volatile uint32_t AHB2LPENR;     // RCC AHB2 peripheral clock enable in low power (0x54)
+    volatile uint32_t AHB3LPENR;     // RCC AHB3 peripheral clock enable in low power (0x58)
+    volatile uint32_t RESERVED4;     // Reserved                                      (0x5C)
+    volatile uint32_t APB1LPENR;     // RCC APB1 peripheral clock enable in low power (0x60)
+    volatile uint32_t APB2LPENR;     // RCC APB2 peripheral clock enable in low power (0x64)
+    volatile uint32_t RESERVED5[2];  // Reserved                                      (0x68-0x6C)
+    volatile uint32_t BDCR;          // RCC Backup domain control register            (0x70)
+    volatile uint32_t CSR;           // RCC clock control & status register           (0x74)
+    volatile uint32_t RESERVED6[2];  // Reserved                                      (0x78-0x7C)
+    volatile uint32_t SSCGR;         // RCC spread spectrum clock generation register (0x80)
+    volatile uint32_t PLLI2SCFGR;    // RCC PLLI2S configuration register             (0x84)
+    volatile uint32_t PLLSAICFGR;    // RCC PLLSAI configuration register             (0x88)
+    volatile uint32_t DCKCFGR;       // RCC Dedicated Clocks configuration register   (0x8C)
+    volatile uint32_t CKGATENR;      // RCC clocks gated enable register              (0x90)
+    volatile uint32_t DCKCFGR2;      // RCC Dedicated Clocks configuration register 2 (0x94)
+} RCC_RegDef_t;
+
+
+
+/* RCC POINTERS */
+#define RCC ((RCC_RegDef_t*)RCC_BASEADDR)
+
+/*CLOCK ENABLE FOR GPIO to enable the Bus - (bus of GPIO is AHB1)
+ * (In AHB1ENR register GPIOA is in zeroth bit ,thats why below query
+ * to enable GPIOA - CALL "GPIOA_CLK_EN() "
+ *
+ * RCC->AHB1ENR (to access a structure element using a pointer we use -> symbol)
+ *
+ */
+
+#define GPIOA_CLK_EN()  (RCC->AHB1ENR |=(1<<0))
+#define GPIOB_CLK_EN()  (RCC->AHB1ENR |=(1<<1))
+#define GPIOC_CLK_EN()  (RCC->AHB1ENR |=(1<<2))
+#define GPIOD_CLK_EN()  (RCC->AHB1ENR |=(1<<3))
+#define GPIOE_CLK_EN()  (RCC->AHB1ENR |=(1<<4))
+#define GPIOF_CLK_EN()  (RCC->AHB1ENR |=(1<<5))
+#define GPIOG_CLK_EN()  (RCC->AHB1ENR |=(1<<6))
+#define GPIOH_CLK_EN()  (RCC->AHB1ENR |=(1<<7))
+
+
+/*=======================================I2C========================================*/
+
+/*I2C BASE ADDRESSES*/
+#define I2C1_BASEADDRESS  0x40005400U
+#define I2C2_BASEADDRESS  0x40005800U
+#define I2C3_BASEADDRESS  0x40005C00U
+
+/*I2C REGISTER STRUCTURE*/
+typedef struct
+{
+	volatile uint32_t CR1;
+	volatile uint32_t CR2;
+	volatile uint32_t OAR1;
+	volatile uint32_t OAR2;
+	volatile uint32_t DR;
+	volatile uint32_t SR1;
+	volatile uint32_t SR2;
+	volatile uint32_t CCR;
+	volatile uint32_t TRISE;
+	volatile uint32_t FLTR;
+
+}I2C_RegDef_t;
+
+/*I2C POINTERS*/
+
+#define I2C1  ((I2C_RegDef_t*)I2C1_BASEADDRESS)
+#define I2C2  ((I2C_RegDef_t*)I2C2_BASEADDRESS)
+#define I2C3  ((I2C_RegDef_t*)I2C3_BASEADDRESS)
+
+
+
+/* RCC Enable for I2C - APB1 bus  */
+#define I2C1_CLK_EN()   (RCC->APB1ENR |=(1<<21)
+#define I2C2_CLK_EN()   (RCC->APB1ENR |=(1<<22)
+#define I2C3_CLK_EN()   (RCC->APB1ENR |=(1<<23)
+
+
+/*=======================================SPI========================================*/
+
+/*SPI BASE ADDRESSES*/
+#define SPI1_BASEADDR     0x40013000U   // On APB2
+#define SPI2_BASEADDR     0x40003800U   // On APB1
+#define SPI3_BASEADDR     0x40003C00U   // On APB1
+#define SPI4_BASEADDR     0x40013400U   // On APB2
+
+/*SPI REGISTER STRUCTURE*/
+typedef struct
+{
+    volatile uint32_t CR1;        // 0x00: Control register 1
+    volatile uint32_t CR2;        // 0x04: Control register 2
+    volatile uint32_t SR;         // 0x08: Status register
+    volatile uint32_t DR;         // 0x0C: Data register
+    volatile uint32_t CRCPR;      // 0x10: CRC polynomial register
+    volatile uint32_t RXCRCR;     // 0x14: RX CRC register
+    volatile uint32_t TXCRCR;     // 0x18: TX CRC register
+    volatile uint32_t I2SCFGR;    // 0x1C: I2S configuration register
+    volatile uint32_t I2SPR;      // 0x20: I2S prescaler register
+} SPI_RegDef_t;
+
+/*SPI POINTERS*/
+#define SPI1   ((SPI_RegDef_t*)SPI1_BASEADDR)
+#define SPI2   ((SPI_RegDef_t*)SPI2_BASEADDR)
+#define SPI3   ((SPI_RegDef_t*)SPI3_BASEADDR)
+#define SPI4   ((SPI_RegDef_t*)SPI4_BASEADDR)
+
+/* RCC Enable for SPI - APB1 bus and APB2 bus */
+#define SPI1_CLK_EN()   (RCC->APB2ENR |=(1<<12)
+#define SPI4_CLK_EN()   (RCC->APB2ENR |=(1<<13)
+#define SPI2_CLK_EN()   (RCC->APB1ENR |=(1<<14)
+#define SPI3_CLK_EN()   (RCC->APB1ENR |=(1<<15)
+
+
+
+//=================================================================================================
+
+
+/* ADC BASE ADDRESSES - (APB2 BUS) */
+#define ADC1_BASEADDR      0x40012000U
+#define ADC2_BASEADDR      0x40012100U
+#define ADC3_BASEADDR      0x40012200U
+#define ADC_COMMON_BASEADDR 0x40012300U   // ADC common registers (CSR, CCR, CDR)
+
+
+/* ADC REGISTER STRUCTURE */
+typedef struct
+{
+    volatile uint32_t SR;       // ADC status register                   (0x00)
+    volatile uint32_t CR1;      // ADC control register 1                (0x04)
+    volatile uint32_t CR2;      // ADC control register 2                (0x08)
+    volatile uint32_t SMPR1;    // ADC sample time register 1            (0x0C)
+    volatile uint32_t SMPR2;    // ADC sample time register 2            (0x10)
+    volatile uint32_t JOFR1;    // ADC injected channel data offset 1    (0x14)
+    volatile uint32_t JOFR2;    // ADC injected channel data offset 2    (0x18)
+    volatile uint32_t JOFR3;    // ADC injected channel data offset 3    (0x1C)
+    volatile uint32_t JOFR4;    // ADC injected channel data offset 4    (0x20)
+    volatile uint32_t HTR;      // ADC watchdog high threshold           (0x24)
+    volatile uint32_t LTR;      // ADC watchdog low threshold            (0x28)
+    volatile uint32_t SQR1;     // ADC regular sequence register 1       (0x2C)
+    volatile uint32_t SQR2;     // ADC regular sequence register 2       (0x30)
+    volatile uint32_t SQR3;     // ADC regular sequence register 3       (0x34)
+    volatile uint32_t JSQR;     // ADC injected sequence register        (0x38)
+    volatile uint32_t JDR1;     // ADC injected data register 1          (0x3C)
+    volatile uint32_t JDR2;     // ADC injected data register 2          (0x40)
+    volatile uint32_t JDR3;     // ADC injected data register 3          (0x44)
+    volatile uint32_t JDR4;     // ADC injected data register 4          (0x48)
+    volatile uint32_t DR;       // ADC regular data register             (0x4C)
+
+} ADC_RegDef_t;
+
+
+/* ADC COMMON REGISTER STRUCTURE */
+typedef struct
+{
+    volatile uint32_t CSR;     // ADC Common status register      (0x00)
+    volatile uint32_t CCR;     // ADC Common control register     (0x04)
+    volatile uint32_t CDR;     // ADC Common data register        (0x08)
+} ADC_Common_RegDef_t;
+
+/* ADC POINTERS */
+#define ADC1   ((ADC_RegDef_t*)ADC1_BASEADDR)
+#define ADC2   ((ADC_RegDef_t*)ADC2_BASEADDR)
+#define ADC3   ((ADC_RegDef_t*)ADC3_BASEADDR)
+
+/* ADC COMMON POINTER */
+#define ADC_COMMON   ((ADC_Common_RegDef_t*)ADC_COMMON_BASEADDR)
+
+/* CLOCK ENABLE FOR ADC (APB2 BUS) */
+#define ADC1_CLK_EN()   (RCC->APB2ENR |= (1 << 8))
+#define ADC2_CLK_EN()   (RCC->APB2ENR |= (1 << 9))
+#define ADC3_CLK_EN()   (RCC->APB2ENR |= (1 << 10))
+
+#endif /* STM32F446RXX_H_ */

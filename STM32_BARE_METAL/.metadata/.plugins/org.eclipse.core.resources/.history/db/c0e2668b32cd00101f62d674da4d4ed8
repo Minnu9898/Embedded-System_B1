@@ -1,0 +1,16 @@
+
+#include <stdint.h>
+#include <stdio.h>
+
+
+
+int main(void)
+{
+	for(int i=1;i<10;i++)
+	{
+		printf(" \n");
+    printf("Hello_ Minnu \n");
+    printf("Hello_ AAA\n");
+	}
+
+}

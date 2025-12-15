@@ -5,7 +5,7 @@
 
 int main(void)
 {
-	uint8_t chip_id;
+	uint8_t chip_id,MSB,LSB,Middle_MSB;
 
 	DDRB |= (1 << PB3) | (1 << PB5) | (1 << PB2); // MOSI, SCK, SS as outputs
 	DDRB &= ~(1 << PB4);                           // MISO as input
@@ -18,7 +18,7 @@ int main(void)
 
 	// ===== READ CHIP ID =====
 	PORTB &= ~(1 << PB2); // CSB low
-	SPDR = 0xD0;
+	SPDR = 0xD0|0X80;
 	while (!(SPSR & (1 << SPIF)));
 	(void)SPDR;
 	SPDR = 0x00;
@@ -26,7 +26,38 @@ int main(void)
 	chip_id = SPDR;
 	PORTB |= (1 << PB2); // CSB high
 	_delay_ms(100);
+	
+	//============MEASURE TEMPERATURE============
 
+		PORTB &= ~(1 << PB2); // CSB low
+		SPDR = 0xFA|0X80;
+		while (!(SPSR & (1 << SPIF)));
+		(void)SPDR;
+		SPDR = 0x00;
+		while (!(SPSR & (1 << SPIF)));
+		MSB = SPDR;
+		PORTB |= (1 << PB2); // CSB high
+		_delay_ms(100);
+		
+			PORTB &= ~(1 << PB2); // CSB low
+			SPDR = 0xFB|0X80;
+			while (!(SPSR & (1 << SPIF)));
+			(void)SPDR;
+			SPDR = 0x00;
+			while (!(SPSR & (1 << SPIF)));
+			Middle_MSB = SPDR;
+			PORTB |= (1 << PB2); // CSB high
+			_delay_ms(100);
+			
+				PORTB &= ~(1 << PB2); // CSB low
+				SPDR = 0xFC|0X80;
+				while (!(SPSR & (1 << SPIF)));
+				(void)SPDR;
+				SPDR = 0x00;
+				while (!(SPSR & (1 << SPIF)));
+				LSB = SPDR;
+				PORTB |= (1 << PB2); // CSB high
+				_delay_ms(100);
 	while (1)
 	{
 		if(chip_id==0x58)

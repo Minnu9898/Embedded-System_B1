@@ -1,0 +1,43 @@
+
+/*
+ * LEARNINGS
+ * TO MAKE A BIT ZERO  ------> &= ~(0x3 << (5*2));
+ *
+ */
+
+
+#include "stm32f446rxx.h"
+#include <stdint.h>
+#include <stdio.h>
+#include <stddef.h>
+
+
+
+uint32_t ADC1_Read(void);
+float LM35_ReadTemp(void);
+void SWV_Print(char *msg);
+
+
+
+
+int main(void)
+{
+    GPIOA_CLK_EN();     // Enable GPIOA clock
+    ADC1_CLK_EN();      // Enable ADC1 clock
+    // PA1 → Analog Mode
+        GPIOA->MODER &= ~(0x3 << (1*2));
+        GPIOA->MODER |=  (0x3 << (1*2));     // 11 = analog mode
+
+        ADC1_Init();
+
+        while(1)
+        {
+            float temp = LM35_ReadTemp();
+            printf("Temperature : %.2f C\n", temp);
+
+            for(volatile int i=0; i<500000; i++); // small delay (~100ms)
+        }
+
+}
+
+

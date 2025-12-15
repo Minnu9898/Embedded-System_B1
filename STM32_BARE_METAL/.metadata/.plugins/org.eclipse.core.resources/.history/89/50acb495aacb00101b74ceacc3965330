@@ -1,0 +1,46 @@
+
+/*
+ * LEARNINGS
+ * TO MAKE A BIT ZERO  ------> &= ~(0x3 << (5*2));
+ *
+ */
+#include <stdint.h>
+#include "stm32f446rxx.h"
+
+uint32_t ADC1_Read(void);
+float LM35_ReadTemp(void);
+
+
+int main(void)
+{
+
+	ADC1_CLK_EN();    //ENABLE ADC
+	GPIOA_CLK_EN();		//OUTPUT TO PA1
+
+	GPIOA->MODER |=(0x3 <<(1*2)) ; // SET PA1 AS OUTPUT
+
+	/* ADC Configuration */
+
+	ADC1->CR2 = 0;               // Reset CR2
+	ADC1->CR2 |= (1 << 0);       // ADON = 1 (Enable ADC)
+	ADC1->SQR3 = 1;              // Channel 1 in regular sequence
+	ADC1->SMPR2 |= (7 << 3);     // Sampling time 480 cycles
+
+	uint32_t ADC_Read(void)
+	{
+	    ADC1->CR2 |= (1 << 30);        // SWSTART - Start conversion
+	    while(!(ADC1->SR & (1 << 1))); // Wait for EOC flag
+	    return ADC1->DR;               // Read data
+	}
+
+
+	float LM35_ReadTemp(void)
+	{
+	    uint32_t adc_value = ADC_Read();
+	    float voltage_mv = (adc_value * 3300.0f) / 4095.0f;
+	    float temp_c = voltage_mv / 10.0f;   // LM35 = 10mV per °C
+	    return temp_c;
+	}
+
+
+}

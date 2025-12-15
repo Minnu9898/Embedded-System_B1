@@ -1,0 +1,16 @@
+
+/*
+ * LEARNINGS
+ * TO MAKE A BIT ZERO  ------> &= ~(0x3 << (5*2));
+ *
+ */
+#include <stdint.h>
+#include "stm32f446rxx.h"
+
+
+
+
+int main(void)
+{
+
+}

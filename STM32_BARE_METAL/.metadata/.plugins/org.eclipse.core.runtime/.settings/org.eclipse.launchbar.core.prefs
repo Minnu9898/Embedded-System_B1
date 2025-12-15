@@ -1,10 +1,15 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
-configDescList=org.eclipse.launchbar.core.descriptorType.default\:First_Prg_STM32 Debug
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:First_Prg_STM32 Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:First_Project_Learning,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:LED_BLINK_DAY_1 (1),org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:LED_BLINK_DAY_1,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:TEMPERATURE_LM35_ADC
 eclipse.preferences.version=1
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:First_Prg_STM32\ Debug\ (1)/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:First_Prg_STM32\ Debug\ (1)/activeLaunchTarget=null\:---
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:First_Project_Learning/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:First_Project_Learning/activeLaunchTarget=null\:---
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:LED_BLINK_DAY_1\ (1)/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:LED_BLINK_DAY_1/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:LED_BLINK_DAY_1/activeLaunchTarget=null\:---
 org.eclipse.launchbar.core.descriptorType.default\:First_Prg_STM32\ Debug\ (1)/activeLaunchMode=debug
 org.eclipse.launchbar.core.descriptorType.default\:First_Prg_STM32\ Debug/activeLaunchMode=run
 org.eclipse.launchbar.core.descriptorType.default\:First_Prg_STM32\ Debug/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local

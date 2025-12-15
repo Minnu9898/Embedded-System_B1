@@ -16,14 +16,76 @@
  ******************************************************************************
  */
 
-#include <stdint.h>
 
-#if !defined(__SOFT_FP__) && defined(__ARM_FP)
-  #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
-#endif
+/*
+ * LEARNINGS
+ * TO MAKE A BIT ZERO  ------> &= ~(0x3 << (5*2));
+ *
+ */
+#include <stdint.h>
+#include "stm32f446rxx.h"
+#include <stdio.h>
+#define LED_PIN         5
+#define BUTTON_PIN      13
+
+void delay_ms(void)
+{
+    {
+    	for(volatile uint32_t i = 0; i <  4000; i++);
+    }
+
+}
 
 int main(void)
 {
-    /* Loop forever */
-	for(;;);
-}
+	/*
+	 * 1. To start we need to enable the BUS connected to GPIOA
+	 *    To Enable bus we need to Enable clock
+	 * 2. To connect our lED we need to set the bit as output
+	 * 	  In GPIOA Register list , we use MODER Register to set this as output
+	 * 	  For that we need to set the 11 th and 10 th bit of MODER register as 0 and 1 respectively.
+	 * 3. We use OTyper register for push pull - Make it as zero as per reference manual
+	 * 4. Set the speed - Generally medium - for that 11 th and 10 th bit  - 01: Medium speed
+	 * 5. Set PUPDR - pull up or pull down
+	 * 6. Make LED ON or OFF initially
+	 *
+	 *
+	 *
+	 */
+
+	GPIOA_CLK_EN();						//Enable GPIOA clock for that
+	GPIOC_CLK_EN();						//Enable clock for GPIOC - To include push button
+	printf("Hello");
+	GPIOA->MODER &= ~(0x3 << (LED_PIN *2)); 		//11 th bit 0
+	GPIOA->MODER|=(1<<10); 				// MAKE 10 TH BIT 1
+	GPIOC->MODER &=~(0x3 <<(BUTTON_PIN *2)); //push button pin need to be 0 0 - 13 *2
+
+
+	GPIOA->OTYPER &=~(1<<LED_PIN);  			//SET TYPE -PUSH PULL
+
+	GPIOA->OSPEEDR &= ~(0x3 << (LED_PIN*2));		//0 1: Medium speed
+	GPIOA->OSPEEDR|=(1<<10);
+
+	GPIOA->PUPDR &= ~(0x3 << (LED_PIN*2));		// 0 0: No pull-up, pull-down
+	GPIOC->PUPDR &= ~(0x3 << (BUTTON_PIN*2));
+	GPIOC->PUPDR|=(0x1<<(BUTTON_PIN *2));
+
+	//GPIOA->ODR &=~(0x1<<5); 				// To set Output level - High Or Low ; Make LED ON/ OFF initially
+	//GPIOC->IDR
+
+	while(1)
+	    {
+	        // pressed = 0, released = 1
+	        if(!(GPIOC->IDR & (1 << BUTTON_PIN)))
+	        {
+	            GPIOA->ODR ^= (1 << LED_PIN); // toggle
+
+
+	        }
+	        else
+	        {
+	            GPIOA->ODR &= ~(1 << LED_PIN); // LED OFF
+	            printf("AAAAA");
+	        }
+	    }
+	}

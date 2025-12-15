@@ -1,0 +1,287 @@
+15:43:31 **** Incremental Build of configuration Debug for project ADC_Temperature_Read_LM35 ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=hard -mthumb -o "Src/main.o"
+In file included from ../Src/main.c:12:
+../Inc/stm32f446rxx.h:32:18: error: unknown type name 'uint32_t'
+   32 |         volatile uint32_t MODER;    // GPIO port mode register              (0x00)
+      |                  ^~~~~~~~
+../Inc/stm32f446rxx.h:33:18: error: unknown type name 'uint32_t'
+   33 |         volatile uint32_t OTYPER;   // GPIO port output type register       (0x04)
+      |                  ^~~~~~~~
+../Inc/stm32f446rxx.h:34:18: error: unknown type name 'uint32_t'
+   34 |         volatile uint32_t OSPEEDR;  // GPIO port output speed register      (0x08)
+      |                  ^~~~~~~~
+../Inc/stm32f446rxx.h:35:18: error: unknown type name 'uint32_t'
+   35 |         volatile uint32_t PUPDR;    // GPIO port pull-up/pull-down register (0x0C)
+      |                  ^~~~~~~~
+../Inc/stm32f446rxx.h:36:18: error: unknown type name 'uint32_t'
+   36 |         volatile uint32_t IDR;      // GPIO port input data register        (0x10)
+      |                  ^~~~~~~~
+../Inc/stm32f446rxx.h:37:18: error: unknown type name 'uint32_t'
+   37 |         volatile uint32_t ODR;      // GPIO port output data register       (0x14)
+      |                  ^~~~~~~~
+../Inc/stm32f446rxx.h:38:18: error: unknown type name 'uint32_t'
+   38 |         volatile uint32_t BSRR;     // GPIO port bit set/reset register     (0x18)
+      |                  ^~~~~~~~
+../Inc/stm32f446rxx.h:39:18: error: unknown type name 'uint32_t'
+   39 |         volatile uint32_t LCKR;     // GPIO port configuration lock register(0x1C)
+      |                  ^~~~~~~~
+../Inc/stm32f446rxx.h:40:18: error: unknown type name 'uint32_t'
+   40 |         volatile uint32_t AFRL;     // GPIO alternate function low register (0x20)
+      |                  ^~~~~~~~
+../Inc/stm32f446rxx.h:41:18: error: unknown type name 'uint32_t'
+   41 |         volatile uint32_t AFRH;     // GPIO alternate function high register(0x24)
+      |                  ^~~~~~~~
+../Inc/stm32f446rxx.h:65:10: error: unknown type name 'uint32_t'
+   65 | volatile uint32_t CR;            // RCC clock control register                    (0x00)
+      |          ^~~~~~~~
+../Inc/stm32f446rxx.h:66:14: error: unknown type name 'uint32_t'
+   66 |     volatile uint32_t PLLCFGR;       // RCC PLL configuration register                (0x04)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:67:14: error: unknown type name 'uint32_t'
+   67 |     volatile uint32_t CFGR;          // RCC clock configuration register              (0x08)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:68:14: error: unknown type name 'uint32_t'
+   68 |     volatile uint32_t CIR;           // RCC clock interrupt register                  (0x0C)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:69:14: error: unknown type name 'uint32_t'
+   69 |     volatile uint32_t AHB1RSTR;      // RCC AHB1 peripheral reset register            (0x10)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:70:14: error: unknown type name 'uint32_t'
+   70 |     volatile uint32_t AHB2RSTR;      // RCC AHB2 peripheral reset register            (0x14)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:71:14: error: unknown type name 'uint32_t'
+   71 |     volatile uint32_t AHB3RSTR;      // RCC AHB3 peripheral reset register            (0x18)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:72:14: error: unknown type name 'uint32_t'
+   72 |     volatile uint32_t RESERVED0;     // Reserved                                      (0x1C)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:73:14: error: unknown type name 'uint32_t'
+   73 |     volatile uint32_t APB1RSTR;      // RCC APB1 peripheral reset register            (0x20)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:74:14: error: unknown type name 'uint32_t'
+   74 |     volatile uint32_t APB2RSTR;      // RCC APB2 peripheral reset register            (0x24)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:75:14: error: unknown type name 'uint32_t'
+   75 |     volatile uint32_t RESERVED1[2];  // Reserved                                      (0x28-0x2C)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:76:14: error: unknown type name 'uint32_t'
+   76 |     volatile uint32_t AHB1ENR;       // RCC AHB1 peripheral clock enable register     (0x30)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:77:14: error: unknown type name 'uint32_t'
+   77 |     volatile uint32_t AHB2ENR;       // RCC AHB2 peripheral clock enable register     (0x34)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:78:14: error: unknown type name 'uint32_t'
+   78 |     volatile uint32_t AHB3ENR;       // RCC AHB3 peripheral clock enable register     (0x38)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:79:14: error: unknown type name 'uint32_t'
+   79 |     volatile uint32_t RESERVED2;     // Reserved                                      (0x3C)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:80:14: error: unknown type name 'uint32_t'
+   80 |     volatile uint32_t APB1ENR;       // RCC APB1 peripheral clock enable register     (0x40)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:81:14: error: unknown type name 'uint32_t'
+   81 |     volatile uint32_t APB2ENR;       // RCC APB2 peripheral clock enable register     (0x44)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:82:14: error: unknown type name 'uint32_t'
+   82 |     volatile uint32_t RESERVED3[2];  // Reserved                                      (0x48-0x4C)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:83:14: error: unknown type name 'uint32_t'
+   83 |     volatile uint32_t AHB1LPENR;     // RCC AHB1 peripheral clock enable in low power (0x50)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:84:14: error: unknown type name 'uint32_t'
+   84 |     volatile uint32_t AHB2LPENR;     // RCC AHB2 peripheral clock enable in low power (0x54)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:85:14: error: unknown type name 'uint32_t'
+   85 |     volatile uint32_t AHB3LPENR;     // RCC AHB3 peripheral clock enable in low power (0x58)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:86:14: error: unknown type name 'uint32_t'
+   86 |     volatile uint32_t RESERVED4;     // Reserved                                      (0x5C)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:87:14: error: unknown type name 'uint32_t'
+   87 |     volatile uint32_t APB1LPENR;     // RCC APB1 peripheral clock enable in low power (0x60)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:88:14: error: unknown type name 'uint32_t'
+   88 |     volatile uint32_t APB2LPENR;     // RCC APB2 peripheral clock enable in low power (0x64)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:89:14: error: unknown type name 'uint32_t'
+   89 |     volatile uint32_t RESERVED5[2];  // Reserved                                      (0x68-0x6C)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:90:14: error: unknown type name 'uint32_t'
+   90 |     volatile uint32_t BDCR;          // RCC Backup domain control register            (0x70)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:91:14: error: unknown type name 'uint32_t'
+   91 |     volatile uint32_t CSR;           // RCC clock control & status register           (0x74)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:92:14: error: unknown type name 'uint32_t'
+   92 |     volatile uint32_t RESERVED6[2];  // Reserved                                      (0x78-0x7C)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:93:14: error: unknown type name 'uint32_t'
+   93 |     volatile uint32_t SSCGR;         // RCC spread spectrum clock generation register (0x80)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:94:14: error: unknown type name 'uint32_t'
+   94 |     volatile uint32_t PLLI2SCFGR;    // RCC PLLI2S configuration register             (0x84)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:95:14: error: unknown type name 'uint32_t'
+   95 |     volatile uint32_t PLLSAICFGR;    // RCC PLLSAI configuration register             (0x88)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:96:14: error: unknown type name 'uint32_t'
+   96 |     volatile uint32_t DCKCFGR;       // RCC Dedicated Clocks configuration register   (0x8C)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:97:14: error: unknown type name 'uint32_t'
+   97 |     volatile uint32_t CKGATENR;      // RCC clocks gated enable register              (0x90)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:98:14: error: unknown type name 'uint32_t'
+   98 |     volatile uint32_t DCKCFGR2;      // RCC Dedicated Clocks configuration register 2 (0x94)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:134:18: error: unknown type name 'uint32_t'
+  134 |         volatile uint32_t CR1;
+      |                  ^~~~~~~~
+../Inc/stm32f446rxx.h:135:18: error: unknown type name 'uint32_t'
+  135 |         volatile uint32_t CR2;
+      |                  ^~~~~~~~
+../Inc/stm32f446rxx.h:136:18: error: unknown type name 'uint32_t'
+  136 |         volatile uint32_t OAR1;
+      |                  ^~~~~~~~
+../Inc/stm32f446rxx.h:137:18: error: unknown type name 'uint32_t'
+  137 |         volatile uint32_t OAR2;
+      |                  ^~~~~~~~
+../Inc/stm32f446rxx.h:138:18: error: unknown type name 'uint32_t'
+  138 |         volatile uint32_t DR;
+      |                  ^~~~~~~~
+../Inc/stm32f446rxx.h:139:18: error: unknown type name 'uint32_t'
+  139 |         volatile uint32_t SR1;
+      |                  ^~~~~~~~
+../Inc/stm32f446rxx.h:140:18: error: unknown type name 'uint32_t'
+  140 |         volatile uint32_t SR2;
+      |                  ^~~~~~~~
+../Inc/stm32f446rxx.h:141:18: error: unknown type name 'uint32_t'
+  141 |         volatile uint32_t CCR;
+      |                  ^~~~~~~~
+../Inc/stm32f446rxx.h:142:18: error: unknown type name 'uint32_t'
+  142 |         volatile uint32_t TRISE;
+      |                  ^~~~~~~~
+../Inc/stm32f446rxx.h:143:18: error: unknown type name 'uint32_t'
+  143 |         volatile uint32_t FLTR;
+      |                  ^~~~~~~~
+../Inc/stm32f446rxx.h:172:14: error: unknown type name 'uint32_t'
+  172 |     volatile uint32_t CR1;        // 0x00: Control register 1
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:173:14: error: unknown type name 'uint32_t'
+  173 |     volatile uint32_t CR2;        // 0x04: Control register 2
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:174:14: error: unknown type name 'uint32_t'
+  174 |     volatile uint32_t SR;         // 0x08: Status register
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:175:14: error: unknown type name 'uint32_t'
+  175 |     volatile uint32_t DR;         // 0x0C: Data register
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:176:14: error: unknown type name 'uint32_t'
+  176 |     volatile uint32_t CRCPR;      // 0x10: CRC polynomial register
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:177:14: error: unknown type name 'uint32_t'
+  177 |     volatile uint32_t RXCRCR;     // 0x14: RX CRC register
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:178:14: error: unknown type name 'uint32_t'
+  178 |     volatile uint32_t TXCRCR;     // 0x18: TX CRC register
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:179:14: error: unknown type name 'uint32_t'
+  179 |     volatile uint32_t I2SCFGR;    // 0x1C: I2S configuration register
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:180:14: error: unknown type name 'uint32_t'
+  180 |     volatile uint32_t I2SPR;      // 0x20: I2S prescaler register
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:209:14: error: unknown type name 'uint32_t'
+  209 |     volatile uint32_t SR;       // ADC status register                   (0x00)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:210:14: error: unknown type name 'uint32_t'
+  210 |     volatile uint32_t CR1;      // ADC control register 1                (0x04)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:211:14: error: unknown type name 'uint32_t'
+  211 |     volatile uint32_t CR2;      // ADC control register 2                (0x08)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:212:14: error: unknown type name 'uint32_t'
+  212 |     volatile uint32_t SMPR1;    // ADC sample time register 1            (0x0C)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:213:14: error: unknown type name 'uint32_t'
+  213 |     volatile uint32_t SMPR2;    // ADC sample time register 2            (0x10)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:214:14: error: unknown type name 'uint32_t'
+  214 |     volatile uint32_t JOFR1;    // ADC injected channel data offset 1    (0x14)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:215:14: error: unknown type name 'uint32_t'
+  215 |     volatile uint32_t JOFR2;    // ADC injected channel data offset 2    (0x18)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:216:14: error: unknown type name 'uint32_t'
+  216 |     volatile uint32_t JOFR3;    // ADC injected channel data offset 3    (0x1C)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:217:14: error: unknown type name 'uint32_t'
+  217 |     volatile uint32_t JOFR4;    // ADC injected channel data offset 4    (0x20)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:218:14: error: unknown type name 'uint32_t'
+  218 |     volatile uint32_t HTR;      // ADC watchdog high threshold           (0x24)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:219:14: error: unknown type name 'uint32_t'
+  219 |     volatile uint32_t LTR;      // ADC watchdog low threshold            (0x28)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:220:14: error: unknown type name 'uint32_t'
+  220 |     volatile uint32_t SQR1;     // ADC regular sequence register 1       (0x2C)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:221:14: error: unknown type name 'uint32_t'
+  221 |     volatile uint32_t SQR2;     // ADC regular sequence register 2       (0x30)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:222:14: error: unknown type name 'uint32_t'
+  222 |     volatile uint32_t SQR3;     // ADC regular sequence register 3       (0x34)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:223:14: error: unknown type name 'uint32_t'
+  223 |     volatile uint32_t JSQR;     // ADC injected sequence register        (0x38)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:224:14: error: unknown type name 'uint32_t'
+  224 |     volatile uint32_t JDR1;     // ADC injected data register 1          (0x3C)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:225:14: error: unknown type name 'uint32_t'
+  225 |     volatile uint32_t JDR2;     // ADC injected data register 2          (0x40)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:226:14: error: unknown type name 'uint32_t'
+  226 |     volatile uint32_t JDR3;     // ADC injected data register 3          (0x44)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:227:14: error: unknown type name 'uint32_t'
+  227 |     volatile uint32_t JDR4;     // ADC injected data register 4          (0x48)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:228:14: error: unknown type name 'uint32_t'
+  228 |     volatile uint32_t DR;       // ADC regular data register             (0x4C)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:236:14: error: unknown type name 'uint32_t'
+  236 |     volatile uint32_t CSR;     // ADC Common status register      (0x00)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:237:14: error: unknown type name 'uint32_t'
+  237 |     volatile uint32_t CCR;     // ADC Common control register     (0x04)
+      |              ^~~~~~~~
+../Inc/stm32f446rxx.h:238:14: error: unknown type name 'uint32_t'
+  238 |     volatile uint32_t CDR;     // ADC Common data register        (0x08)
+      |              ^~~~~~~~
+../Src/main.c:16:1: error: unknown type name 'uint32_t'
+   16 | uint32_t ADC_Read(void);
+      | ^~~~~~~~
+../Src/main.c:14:1: note: 'uint32_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+   13 | #include <stdio.h>
+  +++ |+#include <stdint.h>
+   14 | 
+../Src/main.c:49:1: error: unknown type name 'uint16_t'
+   49 | uint16_t ADC_Read(void)
+      | ^~~~~~~~
+../Src/main.c:49:1: note: 'uint16_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../Src/main.c: In function 'Get_Temperature':
+../Src/main.c:58:5: error: unknown type name 'uint32_t'
+   58 |     uint32_t value = ADC_Read();
+      |     ^~~~~~~~
+../Src/main.c:58:5: note: 'uint32_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../Src/main.c: In function 'SWV_Print':
+../Src/main.c:67:9: warning: implicit declaration of function 'ITM_SendChar' [-Wimplicit-function-declaration]
+   67 |         ITM_SendChar(*s++);
+      |         ^~~~~~~~~~~~
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+
+15:43:31 Build Failed. 90 errors, 1 warnings. (took 489ms)
+

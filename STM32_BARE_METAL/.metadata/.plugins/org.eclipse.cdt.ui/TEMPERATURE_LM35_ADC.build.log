@@ -1,0 +1,10 @@
+21:22:36 **** Incremental Build of configuration Debug for project TEMPERATURE_LM35_ADC ****
+make -j16 all 
+arm-none-eabi-size  TEMPERATURE_LM35_ADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+  15444	    456	   1904	  17804	   458c	TEMPERATURE_LM35_ADC.elf
+Finished building: default.size.stdout
+ 
+
+21:22:36 Build Finished. 0 errors, 0 warnings. (took 217ms)
+
